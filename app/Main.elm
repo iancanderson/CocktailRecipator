@@ -1,13 +1,9 @@
 module Main exposing (..)
 
-import NativeUi exposing (Node)
-import NativeUi.Elements as Elements
-import NativeUi.Style as Style
+import NativeUi
 import Message exposing (Msg)
-
-
-type alias Model =
-    String
+import Model exposing (Model)
+import View exposing (view)
 
 
 init : ( Model, Cmd Msg )
@@ -15,13 +11,6 @@ init =
     ( "Initial Model"
     , Cmd.none
     )
-
-
-view : Model -> Node Msg
-view model =
-    Elements.view
-        [ NativeUi.style [ Style.flex 1, Style.justifyContent "center", Style.alignItems "center" ] ]
-        [ Elements.text [] [ NativeUi.string model ] ]
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
