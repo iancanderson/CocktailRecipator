@@ -27,15 +27,38 @@ recipeView maybeRecipe =
             NativeUi.Elements.text [] [ Ui.string "No recipe generated yet" ]
 
         Just recipe ->
-            NativeUi.Elements.view [] (List.map additionView recipe.additions)
+            NativeUi.Elements.view
+                []
+                [ spiritAdditionView recipe.spiritAddition
+                , modifyingAgentAdditionView recipe.modifyingAgentAddition
+                , specialFlavorAdditionView recipe.specialFlavorAddition
+                ]
 
 
-additionView : Addition -> Node Msg
-additionView { ingredient, amount } =
+spiritAdditionView : SpiritAddition -> Node Msg
+spiritAdditionView { spirit, amount } =
     NativeUi.Elements.view
         []
         [ amountView amount
-        , text [] [ Ui.string ingredient ]
+        , text [] [ Ui.string <| toString spirit ]
+        ]
+
+
+modifyingAgentAdditionView : ModifyingAgentAddition -> Node Msg
+modifyingAgentAdditionView { modifyingAgent, amount } =
+    NativeUi.Elements.view
+        []
+        [ amountView amount
+        , text [] [ Ui.string <| toString modifyingAgent ]
+        ]
+
+
+specialFlavorAdditionView : SpecialFlavorAddition -> Node Msg
+specialFlavorAdditionView { specialFlavor, amount } =
+    NativeUi.Elements.view
+        []
+        [ amountView amount
+        , text [] [ Ui.string <| toString specialFlavor ]
         ]
 
 
