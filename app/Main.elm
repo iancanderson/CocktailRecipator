@@ -1,6 +1,8 @@
 module Main exposing (..)
 
-import NativeUi
+import NativeUi exposing (Node)
+import NativeUi.Elements as Elements
+import NativeUi.Style as Style
 import Message exposing (Msg)
 
 
@@ -18,8 +20,8 @@ init =
 view : Model -> Node Msg
 view model =
     Elements.view
-        []
-        [ text [] [ Ui.string model ] ]
+        [ NativeUi.style [ Style.flex 1, Style.justifyContent "center", Style.alignItems "center" ] ]
+        [ Elements.text [] [ NativeUi.string model ] ]
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
