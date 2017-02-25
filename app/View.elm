@@ -20,19 +20,14 @@ view model =
         ]
 
 
-recipeView : Maybe Recipe -> Node Msg
-recipeView maybeRecipe =
-    case maybeRecipe of
-        Nothing ->
-            NativeUi.Elements.text [] [ Ui.string "No recipe generated yet" ]
-
-        Just recipe ->
-            NativeUi.Elements.view
-                []
-                [ spiritAdditionView recipe.spiritAddition
-                , modifyingAgentAdditionView recipe.modifyingAgentAddition
-                , specialFlavorAdditionView recipe.specialFlavorAddition
-                ]
+recipeView : Recipe -> Node Msg
+recipeView recipe =
+    NativeUi.Elements.view
+        []
+        [ spiritAdditionView recipe.spiritAddition
+        , modifyingAgentAdditionView recipe.modifyingAgentAddition
+        , specialFlavorAdditionView recipe.specialFlavorAddition
+        ]
 
 
 spiritAdditionView : SpiritAddition -> Node Msg

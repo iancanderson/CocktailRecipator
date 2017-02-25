@@ -1,8 +1,9 @@
 module Main exposing (..)
 
 import NativeUi
-import Message exposing (Msg(..))
-import Model exposing (Model, generateRecipe, initialModel)
+import Message exposing (Msg)
+import Model exposing (Model, initialModel)
+import Update exposing (update)
 import View exposing (view)
 
 
@@ -11,13 +12,6 @@ init =
     ( initialModel
     , Cmd.none
     )
-
-
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case msg of
-        GenerateRecipe ->
-            ( generateRecipe, Cmd.none )
 
 
 subscriptions : Model -> Sub Msg
